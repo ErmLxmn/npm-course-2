@@ -29,8 +29,12 @@ app.get('/json', (req, res) => {
     res.json(jsonFile)
 })
 
+function getDateString(){
+    return new Date().toString();
+}
+
 app.get('/now', function(req, res, next) {
-    req.time = new Date().toString();
+    req.time = getDateString();
     next();
   }, function(req, res) {
     res.json({time: req.time});
