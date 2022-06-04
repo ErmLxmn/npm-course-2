@@ -1,6 +1,8 @@
 let express = require('express');
 let app = express();
 //require('dotenv').config();
+const mySecret = process.env['MESSAGE_STYLE']
+
 
 
 app.use("/public", express.static(__dirname+"/public"));
