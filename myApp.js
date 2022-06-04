@@ -7,6 +7,13 @@ const mySecret = process.env['MESSAGE_STYLE']
 
 app.use("/public", express.static(__dirname+"/public"));
 
+
+app.use(function(req, res, next) {
+    let format = req.method + " " + req.path + " - " + req.ip;
+    console.log(format)
+    next();
+  });
+
 app.get('/', (req, res) => {
     res.sendFile( __dirname+"/views/index.html")
   })
