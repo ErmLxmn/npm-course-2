@@ -9,7 +9,7 @@ console.log("Hello World")
 
 
 app.get('/', (req, res) => {
-    res.send( "Hello Express")
+    res.send( "/views/index.html")
   })
 
 
