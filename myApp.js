@@ -5,7 +5,7 @@ let app = express();
 console.log(__dirname)
 
 app.get('/', (req, res) => {
-    res.send( __dirname+"/views/index.html")
+    res.sendFile( __dirname+"/views/index.html")
   })
 
 
