@@ -2,7 +2,6 @@ let express = require('express');
 let app = express();
 
 
-console.log(__dirname)
 app.use("/public", express.static(__dirname+"/public"));
 
 app.get('/', (req, res) => {
