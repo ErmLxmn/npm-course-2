@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
-//require('dotenv').config();
+let moment = require('moment');
+require('dotenv').config();
 const mySecret = process.env['MESSAGE_STYLE']
 
 
@@ -28,6 +29,13 @@ app.get('/json', (req, res) => {
     res.json(jsonFile)
 })
 
+app.get('/now', function(req, res, next) {
+    console.log(moment.now())
+    req.time = new Date().toString();
+    next();
+  }, function(req, res) {
+    res.send(req.time);
+  });
 
 
 
