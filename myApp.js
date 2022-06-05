@@ -65,7 +65,15 @@ app.get("/name", function(req, res) {
     });
   });
 
-app
+app.post("/name", function (req, res){
+  let fullname = req.body.first + " " + req.body.last;
+
+  res.json(
+    {
+      name: `${fullname}`
+    }
+  );
+})
 
 
 
