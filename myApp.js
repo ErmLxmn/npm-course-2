@@ -13,14 +13,13 @@ app.use(bodyParser.json());
 
 
 app.use(function(req, res, next) {
-    let format = req.method + " " + req.path + " - " + req.ip;
-    console.log(format)
+    let logs = req.method + " " + req.path + " - " + req.ip;
+    console.log(logs)
     next();
   });
 
 app.use(function (req, res, next){
   bodyParser.urlencoded({extended: false})
-  console.log(bodyParser)
   next();
 })
 
