@@ -8,6 +8,8 @@ const mySecret = process.env['MESSAGE_STYLE'];
 
 
 app.use("/public", express.static(__dirname+"/public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 app.use(function(req, res, next) {
