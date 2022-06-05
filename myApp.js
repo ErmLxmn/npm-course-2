@@ -1,8 +1,9 @@
 let express = require('express');
 let app = express();
 let moment = require('moment');
+let bodyParser = require('body-parser');
 require('dotenv').config();
-const mySecret = process.env['MESSAGE_STYLE']
+const mySecret = process.env['MESSAGE_STYLE'];
 
 
 
@@ -15,11 +16,15 @@ app.use(function(req, res, next) {
     next();
   });
 
+app.use(function (req, res, next){
+  bodyParser.urlencoded({extended: false})
+  console.log(bodyParser)
+  next();
+})
+
 app.get('/', (req, res) => {
     res.sendFile( __dirname+"/views/index.html")
   })
-
-
 
 app.get('/json', (req, res) => {
     let jsonFile = {"message": "Hello json"};
@@ -35,6 +40,7 @@ function getDateString(){
 
 app.get('/now', function(req, res, next) {
     req.time = getDateString();
+
     next();
   }, function(req, res) {
     res.json({time: req.time});
@@ -42,6 +48,7 @@ app.get('/now', function(req, res, next) {
 
 app.get("/:word/echo", (req, res) => {
     let { word } = req.params;
+
     res.json({
       echo: word
     });
@@ -56,7 +63,7 @@ app.get("/name", function(req, res) {
     });
   });
 
-
+app
 
 
 
